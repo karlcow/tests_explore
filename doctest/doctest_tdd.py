@@ -11,7 +11,8 @@ def post_date(content):
         ...
     ValueError: time data 'foobar' does not match format '%Y-%m-%d'
     """
-    pass
+    date = content.split(':')[1].strip()
+    return date
 
 if __name__ == "__main__":
     doctest.testmod()
