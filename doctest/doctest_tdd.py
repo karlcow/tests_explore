@@ -1,4 +1,5 @@
 import doctest
+import datetime
 
 def post_date(content):
     """
@@ -12,7 +13,12 @@ def post_date(content):
     ValueError: time data 'foobar' does not match format '%Y-%m-%d'
     """
     date = content.split(':')[1].strip()
-    return date
+    try:
+        datetime.datetime.strptime(date, '%Y-%m-%d')
+        return date
+    except Exception as error:
+        raise error
+
 
 if __name__ == "__main__":
     doctest.testmod()
