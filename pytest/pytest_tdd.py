@@ -2,11 +2,16 @@
 Pytest TDD Example
 """
 import pytest
+import datetime
 
 def post_date(content):
     """Extract the date from the content."""
     date = content.split(':')[1].strip()
-    return date
+    try:
+        datetime.datetime.strptime(date, '%Y-%m-%d')
+        return date
+    except Exception as error:
+        raise error
 
 
 def test_post_date_parsing():
